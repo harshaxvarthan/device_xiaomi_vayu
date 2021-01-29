@@ -349,6 +349,19 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_c2_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_video.xml
 
+# Oneplus Stuff
+PRODUCT_PACKAGES += \
+    OnePlusRecentsProvider \
+    OPLauncher \
+    OPIconpackOxygen \
+    OPIconpackRound \
+    OPWidget
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/OPLauncher2/etc/permissions/privapp-permissions-op-launcher.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-op-launcher.xml \
+    $(LOCAL_PATH)/OPLauncher2/etc/sysconfig/op-launcher-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/op-launcher-hiddenapi-package-whitelist.xml \
+    $(LOCAL_PATH)/OPLauncher2/etc/default-permissions/default-permissions.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/default-permissions/default-permissions.xml 
+
 # Overlays
 PRODUCT_PACKAGES += \
    $(DEVICE_PATH)/overlay \
