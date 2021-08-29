@@ -345,6 +345,7 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
+   $(DEVICE_PATH)/overlay \
    CarrierConfigOverlayVayu \
    DialerOverlayVayu \
    FrameworksResOverlayVayu \
