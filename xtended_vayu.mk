@@ -18,7 +18,7 @@ $(call inherit-product, vendor/xtended/config/common_full_phone.mk)
 WITH_GAPPS := true
 TARGET_FACE_UNLOCK_SUPPORTED := true
 XTENDED_BUILD_TYPE := UNOFFICIAL
-XTENDED_BUILD_MAINTAINER := harshaxvarthan
+XTENDED_BUILD_MAINTAINER := ashstrix
 TARGET_BOOT_ANIMATION_RES := 1080
 
 PRODUCT_NAME := xtended_vayu
