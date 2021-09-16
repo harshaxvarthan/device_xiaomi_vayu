@@ -1,1 +1,15 @@
 set_prop(rild, deviceid_prop)
+
+# Allow rild to read, write and create files in vendor_data_file
+allow rild vendor_data_file:dir rw_dir_perms;
+allow rild vendor_data_file:file create_file_perms;
+
+# Allow rild to read, write and create files in wifi_nv_data_file
+allow rild wifi_nv_data_file:dir rw_dir_perms;
+allow rild wifi_nv_data_file:file create_file_perms;
+
+# Allow rild to read, open, map, and get attributes in vendor_pd_locater_dbg_prop
+allow rild vendor_pd_locater_dbg_prop:file { getattr map open read };
+
+# Allow rild to read, write, open, and control IO in vendor_diag_device
+allow rild vendor_diag_device:chr_file { ioctl open read write };
