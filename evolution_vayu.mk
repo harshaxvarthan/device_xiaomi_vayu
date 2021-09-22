@@ -11,17 +11,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit device configurations
 $(call inherit-product, device/xiaomi/vayu/device.mk)
 
-# Inherit some common Xtended stuff.
-$(call inherit-product, vendor/xtended/config/common_full_phone.mk)
+# Inherit some common Evolution X stuff.
+$(call inherit-product, vendor/evolution/config/common_full_phone.mk)
 
 # Gapps
 WITH_GAPPS := true
 TARGET_FACE_UNLOCK_SUPPORTED := true
-XTENDED_BUILD_TYPE := UNOFFICIAL
-XTENDED_BUILD_MAINTAINER := ashstrix
 TARGET_BOOT_ANIMATION_RES := 1080
 
-PRODUCT_NAME := xtended_vayu
+PRODUCT_NAME := evolution_vayu
 PRODUCT_DEVICE := vayu
 PRODUCT_BRAND := POCO
 PRODUCT_MODEL := Poco X3 Pro

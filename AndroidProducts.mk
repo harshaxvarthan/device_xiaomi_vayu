@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/xtended_vayu.mk
+    $(LOCAL_DIR)/evolution_vayu.mk
 
 COMMON_LUNCH_CHOICES := \
-    xtended_vayu-eng \
-    xtended_vayu-userdebug \
-    xtended_vayu-user
+    evolution_vayu-eng \
+    evolution_vayu-userdebug \
+    evolution_vayu-user
