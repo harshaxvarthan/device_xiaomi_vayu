@@ -109,6 +109,7 @@ on post-fs-data
     mkdir /data/vendor/thermal 0771 root system
     mkdir /data/vendor/thermal/config 0771 root system
     chown system system /sys/class/thermal/thermal_message/sconfig
+    chmod 0644 /sys/class/thermal/thermal_message/sconfig
 
 on early-boot
     start vendor.sensors
