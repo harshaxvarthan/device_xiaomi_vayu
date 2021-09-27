@@ -13,7 +13,7 @@
         <name>android.hardware.gnss</name>
         <version>1.0-1</version>
         <version>2.0-1</version>
-        <interface> 
+        <interface>
             <name>IGnss</name>
             <instance>default</instance>
             <instance>gnss_vendor</instance>
