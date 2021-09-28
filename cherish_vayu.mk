@@ -14,12 +14,6 @@ $(call inherit-product, device/xiaomi/vayu/device.mk)
 # Inherit some common Cherish stuff
 $(call inherit-product, vendor/cherish/config/common_full_phone.mk)
 
-# OnePlus Launcher
-$(call inherit-product, vendor/oplauncher/OPLauncher.mk)
-
-# OnePlus File Manager
-$(call inherit-product, vendor/opfilemanager/config.mk)
-
 #Unofficial
 CHERISH_BUILD_TYPE :=UNOFFICIAL
 
