@@ -15,8 +15,8 @@ $(call inherit-product, device/xiaomi/vayu/device.mk)
 $(call inherit-product, vendor/aosp/config/common.mk)
 
 # Inherit RohieOS Unofficial build stuff.
-ROHIE_MAINTAINER := harshaxvarthan
-ROHIE_BUILD_TYPE := UNOFFICIAL
+ROHIE_MAINTAINER := darkinvader
+ROHIE_BUILD_TYPE := OFFICIAL
 TARGET_FACE_UNLOCK_SUPPORTED := true
 TARGET_BOOT_ANIMATION_RES := 1080
 
