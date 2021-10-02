@@ -185,6 +185,9 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 # Vendor Security patch level
 VENDOR_SECURITY_PATCH := 2021-08-01
 
+# Sepolicy Hack
+BUILD_BROKEN_ENFORCE_SYSPROP_OWNER := true
+
 # Verified Boot
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
