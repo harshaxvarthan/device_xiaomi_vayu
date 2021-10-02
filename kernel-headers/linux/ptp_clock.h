@@ -1,93 +1,147 @@
-/****************************************************************************
- ****************************************************************************
- ***
- ***   This header was automatically generated from a Linux kernel header
- ***   of the same name, to make information necessary for userspace to
- ***   call into the kernel available to libc.  It contains only constants,
- ***   structures, and macros generated from the original header, and thus,
- ***   contains no copyrightable information.
- ***
- ***   To edit the content of this header, modify the corresponding
- ***   source file (e.g. under external/kernel-headers/original/) then
- ***   run bionic/libc/kernel/tools/update_all.py
- ***
- ***   Any manual change here will be lost the next time this script will
- ***   be run. You've been warned!
- ***
- ****************************************************************************
- ****************************************************************************/
+/* SPDX-License-Identifier: GPL-2.0+ WITH Linux-syscall-note */
+/*
+ * PTP 1588 clock support - user space interface
+ *
+ * Copyright (C) 2010 OMICRON electronics GmbH
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+
 #ifndef _PTP_CLOCK_H_
 #define _PTP_CLOCK_H_
+
 #include <linux/ioctl.h>
 #include <linux/types.h>
-#define PTP_ENABLE_FEATURE (1 << 0)
-#define PTP_RISING_EDGE (1 << 1)
-#define PTP_FALLING_EDGE (1 << 2)
+
+/* PTP_xxx bits, for the flags field within the request structures. */
+#define PTP_ENABLE_FEATURE (1<<0)
+#define PTP_RISING_EDGE    (1<<1)
+#define PTP_FALLING_EDGE   (1<<2)
+
+/*
+ * struct ptp_clock_time - represents a time value
+ *
+ * The sign of the seconds field applies to the whole value. The
+ * nanoseconds field is always unsigned. The reserved field is
+ * included for sub-nanosecond resolution, should the demand for
+ * this ever appear.
+ *
+ */
 struct ptp_clock_time {
-  __s64 sec;
-  __u32 nsec;
-  __u32 reserved;
+	__s64 sec;  /* seconds */
+	__u32 nsec; /* nanoseconds */
+	__u32 reserved;
 };
+
 struct ptp_clock_caps {
-  int max_adj;
-  int n_alarm;
-  int n_ext_ts;
-  int n_per_out;
-  int pps;
-  int n_pins;
-  int cross_timestamping;
-  int rsv[13];
+	int max_adj;   /* Maximum frequency adjustment in parts per billon. */
+	int n_alarm;   /* Number of programmable alarms. */
+	int n_ext_ts;  /* Number of external time stamp channels. */
+	int n_per_out; /* Number of programmable periodic signals. */
+	int pps;       /* Whether the clock supports a PPS callback. */
+	int n_pins;    /* Number of input/output pins. */
+	/* Whether the clock supports precise system-device cross timestamps */
+	int cross_timestamping;
+	int rsv[13];   /* Reserved for future use. */
 };
+
 struct ptp_extts_request {
-  unsigned int index;
-  unsigned int flags;
-  unsigned int rsv[2];
+	unsigned int index;  /* Which channel to configure. */
+	unsigned int flags;  /* Bit field for PTP_xxx flags. */
+	unsigned int rsv[2]; /* Reserved for future use. */
 };
+
 struct ptp_perout_request {
-  struct ptp_clock_time start;
-  struct ptp_clock_time period;
-  unsigned int index;
-  unsigned int flags;
-  unsigned int rsv[4];
+	struct ptp_clock_time start;  /* Absolute start time. */
+	struct ptp_clock_time period; /* Desired period, zero means disable. */
+	unsigned int index;           /* Which channel to configure. */
+	unsigned int flags;           /* Reserved for future use. */
+	unsigned int rsv[4];          /* Reserved for future use. */
 };
-#define PTP_MAX_SAMPLES 25
+
+#define PTP_MAX_SAMPLES 25 /* Maximum allowed offset measurement samples. */
+
 struct ptp_sys_offset {
-  unsigned int n_samples;
-  unsigned int rsv[3];
-  struct ptp_clock_time ts[2 * PTP_MAX_SAMPLES + 1];
+	unsigned int n_samples; /* Desired number of measurements. */
+	unsigned int rsv[3];    /* Reserved for future use. */
+	/*
+	 * Array of interleaved system/phc time stamps. The kernel
+	 * will provide 2*n_samples + 1 time stamps, with the last
+	 * one as a system time stamp.
+	 */
+	struct ptp_clock_time ts[2 * PTP_MAX_SAMPLES + 1];
 };
+
 struct ptp_sys_offset_precise {
-  struct ptp_clock_time device;
-  struct ptp_clock_time sys_realtime;
-  struct ptp_clock_time sys_monoraw;
-  unsigned int rsv[4];
+	struct ptp_clock_time device;
+	struct ptp_clock_time sys_realtime;
+	struct ptp_clock_time sys_monoraw;
+	unsigned int rsv[4];    /* Reserved for future use. */
 };
+
 enum ptp_pin_function {
-  PTP_PF_NONE,
-  PTP_PF_EXTTS,
-  PTP_PF_PEROUT,
-  PTP_PF_PHYSYNC,
+	PTP_PF_NONE,
+	PTP_PF_EXTTS,
+	PTP_PF_PEROUT,
+	PTP_PF_PHYSYNC,
 };
+
 struct ptp_pin_desc {
-  char name[64];
-  unsigned int index;
-  unsigned int func;
-  unsigned int chan;
-  unsigned int rsv[5];
+	/*
+	 * Hardware specific human readable pin name. This field is
+	 * set by the kernel during the PTP_PIN_GETFUNC ioctl and is
+	 * ignored for the PTP_PIN_SETFUNC ioctl.
+	 */
+	char name[64];
+	/*
+	 * Pin index in the range of zero to ptp_clock_caps.n_pins - 1.
+	 */
+	unsigned int index;
+	/*
+	 * Which of the PTP_PF_xxx functions to use on this pin.
+	 */
+	unsigned int func;
+	/*
+	 * The specific channel to use for this function.
+	 * This corresponds to the 'index' field of the
+	 * PTP_EXTTS_REQUEST and PTP_PEROUT_REQUEST ioctls.
+	 */
+	unsigned int chan;
+	/*
+	 * Reserved for future use.
+	 */
+	unsigned int rsv[5];
 };
+
 #define PTP_CLK_MAGIC '='
-#define PTP_CLOCK_GETCAPS _IOR(PTP_CLK_MAGIC, 1, struct ptp_clock_caps)
-#define PTP_EXTTS_REQUEST _IOW(PTP_CLK_MAGIC, 2, struct ptp_extts_request)
+
+#define PTP_CLOCK_GETCAPS  _IOR(PTP_CLK_MAGIC, 1, struct ptp_clock_caps)
+#define PTP_EXTTS_REQUEST  _IOW(PTP_CLK_MAGIC, 2, struct ptp_extts_request)
 #define PTP_PEROUT_REQUEST _IOW(PTP_CLK_MAGIC, 3, struct ptp_perout_request)
-#define PTP_ENABLE_PPS _IOW(PTP_CLK_MAGIC, 4, int)
-#define PTP_SYS_OFFSET _IOW(PTP_CLK_MAGIC, 5, struct ptp_sys_offset)
-#define PTP_PIN_GETFUNC _IOWR(PTP_CLK_MAGIC, 6, struct ptp_pin_desc)
-#define PTP_PIN_SETFUNC _IOW(PTP_CLK_MAGIC, 7, struct ptp_pin_desc)
-#define PTP_SYS_OFFSET_PRECISE _IOWR(PTP_CLK_MAGIC, 8, struct ptp_sys_offset_precise)
+#define PTP_ENABLE_PPS     _IOW(PTP_CLK_MAGIC, 4, int)
+#define PTP_SYS_OFFSET     _IOW(PTP_CLK_MAGIC, 5, struct ptp_sys_offset)
+#define PTP_PIN_GETFUNC    _IOWR(PTP_CLK_MAGIC, 6, struct ptp_pin_desc)
+#define PTP_PIN_SETFUNC    _IOW(PTP_CLK_MAGIC, 7, struct ptp_pin_desc)
+#define PTP_SYS_OFFSET_PRECISE \
+	_IOWR(PTP_CLK_MAGIC, 8, struct ptp_sys_offset_precise)
+
 struct ptp_extts_event {
-  struct ptp_clock_time t;
-  unsigned int index;
-  unsigned int flags;
-  unsigned int rsv[2];
+	struct ptp_clock_time t; /* Time event occured. */
+	unsigned int index;      /* Which channel produced the event. */
+	unsigned int flags;      /* Reserved for future use. */
+	unsigned int rsv[2];     /* Reserved for future use. */
 };
+
 #endif

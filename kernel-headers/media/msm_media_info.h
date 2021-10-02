@@ -896,7 +896,7 @@ enum color_fmts {
 #define COLOR_FMT_P010		COLOR_FMT_P010
 #define COLOR_FMT_NV12_512		COLOR_FMT_NV12_512
 
-static inline unsigned int VENUS_EXTRADATA_SIZE(int width, int height)
+static __inline__ unsigned int VENUS_EXTRADATA_SIZE(int width, int height)
 {
 	(void)height;
 	(void)width;
@@ -915,7 +915,7 @@ static inline unsigned int VENUS_EXTRADATA_SIZE(int width, int height)
  * Progressive: width
  * Interlaced: width
  */
-static inline unsigned int VENUS_Y_STRIDE(int color_fmt, int width)
+static __inline__ unsigned int VENUS_Y_STRIDE(int color_fmt, int width)
 {
 	unsigned int alignment, stride = 0;
 
@@ -961,7 +961,7 @@ invalid_input:
  * Progressive: width
  * Interlaced: width
  */
-static inline unsigned int VENUS_UV_STRIDE(int color_fmt, int width)
+static __inline__ unsigned int VENUS_UV_STRIDE(int color_fmt, int width)
 {
 	unsigned int alignment, stride = 0;
 
@@ -1007,7 +1007,7 @@ invalid_input:
  * Progressive: height
  * Interlaced: (height+1)>>1
  */
-static inline unsigned int VENUS_Y_SCANLINES(int color_fmt, int height)
+static __inline__ unsigned int VENUS_Y_SCANLINES(int color_fmt, int height)
 {
 	unsigned int alignment, sclines = 0;
 
@@ -1044,7 +1044,7 @@ invalid_input:
  * Progressive: height
  * Interlaced: (height+1)>>1
  */
-static inline unsigned int VENUS_UV_SCANLINES(int color_fmt, int height)
+static __inline__ unsigned int VENUS_UV_SCANLINES(int color_fmt, int height)
 {
 	unsigned int alignment, sclines = 0;
 
@@ -1083,7 +1083,7 @@ invalid_input:
  * Progressive: width
  * Interlaced: width
  */
-static inline unsigned int VENUS_Y_META_STRIDE(int color_fmt, int width)
+static __inline__ unsigned int VENUS_Y_META_STRIDE(int color_fmt, int width)
 {
 	int y_tile_width = 0, y_meta_stride = 0;
 
@@ -1116,7 +1116,7 @@ invalid_input:
  * Progressive: height
  * Interlaced: (height+1)>>1
  */
-static inline unsigned int VENUS_Y_META_SCANLINES(int color_fmt, int height)
+static __inline__ unsigned int VENUS_Y_META_SCANLINES(int color_fmt, int height)
 {
 	int y_tile_height = 0, y_meta_scanlines = 0;
 
@@ -1149,7 +1149,7 @@ invalid_input:
  * Progressive: width
  * Interlaced: width
  */
-static inline unsigned int VENUS_UV_META_STRIDE(int color_fmt, int width)
+static __inline__ unsigned int VENUS_UV_META_STRIDE(int color_fmt, int width)
 {
 	int uv_tile_width = 0, uv_meta_stride = 0;
 
@@ -1182,7 +1182,7 @@ invalid_input:
  * Progressive: height
  * Interlaced: (height+1)>>1
  */
-static inline unsigned int VENUS_UV_META_SCANLINES(int color_fmt, int height)
+static __inline__ unsigned int VENUS_UV_META_SCANLINES(int color_fmt, int height)
 {
 	int uv_tile_height = 0, uv_meta_scanlines = 0;
 
@@ -1208,7 +1208,7 @@ invalid_input:
 	return uv_meta_scanlines;
 }
 
-static inline unsigned int VENUS_RGB_STRIDE(int color_fmt, int width)
+static __inline__ unsigned int VENUS_RGB_STRIDE(int color_fmt, int width)
 {
 	unsigned int alignment = 0, stride = 0, bpp = 4;
 
@@ -1241,7 +1241,7 @@ invalid_input:
 	return stride;
 }
 
-static inline unsigned int VENUS_RGB_SCANLINES(int color_fmt, int height)
+static __inline__ unsigned int VENUS_RGB_SCANLINES(int color_fmt, int height)
 {
 	unsigned int alignment = 0, scanlines = 0;
 
@@ -1268,7 +1268,7 @@ invalid_input:
 	return scanlines;
 }
 
-static inline unsigned int VENUS_RGB_META_STRIDE(int color_fmt, int width)
+static __inline__ unsigned int VENUS_RGB_META_STRIDE(int color_fmt, int width)
 {
 	int rgb_tile_width = 0, rgb_meta_stride = 0;
 
@@ -1295,7 +1295,7 @@ invalid_input:
 	return rgb_meta_stride;
 }
 
-static inline unsigned int VENUS_RGB_META_SCANLINES(int color_fmt, int height)
+static __inline__ unsigned int VENUS_RGB_META_SCANLINES(int color_fmt, int height)
 {
 	int rgb_tile_height = 0, rgb_meta_scanlines = 0;
 
@@ -1330,7 +1330,7 @@ invalid_input:
  * Progressive: height
  * Interlaced: height
  */
-static inline unsigned int VENUS_BUFFER_SIZE(
+static __inline__ unsigned int VENUS_BUFFER_SIZE(
 	int color_fmt, int width, int height)
 {
 	unsigned int uv_alignment = 0, size = 0;
@@ -1451,7 +1451,7 @@ invalid_input:
 	return size;
 }
 
-static inline unsigned int VENUS_BUFFER_SIZE_USED(
+static __inline__ unsigned int VENUS_BUFFER_SIZE_USED(
 	int color_fmt, int width, int height, int interlace)
 {
 	unsigned int size = 0;
@@ -1491,7 +1491,7 @@ invalid_input:
 	return size;
 }
 
-static inline unsigned int VENUS_VIEW2_OFFSET(
+static __inline__ unsigned int VENUS_VIEW2_OFFSET(
 	int color_fmt, int width, int height)
 {
 	unsigned int offset = 0;

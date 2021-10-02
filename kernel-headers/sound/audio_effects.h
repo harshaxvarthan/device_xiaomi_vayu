@@ -329,7 +329,7 @@ struct pbe_config_t {
 	int32_t p1BandPassCoeffs[5*3];
 	int32_t p1BassShelfCoeffs[5];
 	int32_t p1TrebleShelfCoeffs[5];
-} __attribute__((packed));
+} __packed;
 
 struct pbe_params {
 	uint32_t device;
