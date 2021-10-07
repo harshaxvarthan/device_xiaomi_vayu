@@ -1,4 +1,3 @@
-type persist_device_parts, property_type;
 app_domain(devicesettings_app)
 
 # Allow devicesettings_app to find *_service
@@ -27,10 +26,3 @@ allow devicesettings_app {
   sysfs_leds
   sysfs_thermal
 }:{ file lnk_file } rw_file_perms;
-
-# Allow xiaomi_settings to read and write to sysfs_vibrator
-allow devicesettings_app sysfs_vibrator:dir search;
-allow devicesettings_app sysfs_vibrator:file rw_file_perms;
-
-get_prop(devicesettings_app, persist_device_parts)
-set_prop(devicesettings_app, persist_device_parts)
