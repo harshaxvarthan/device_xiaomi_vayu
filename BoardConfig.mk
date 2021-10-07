@@ -97,6 +97,10 @@ BOARD_KERNEL_IMAGE_NAME := Image
 ifeq ($(TARGET_PREBUILT_KERNEL),)
   TARGET_KERNEL_CONFIG := vayu_user_defconfig
   TARGET_KERNEL_CLANG_COMPILE := true
+  TARGET_KERNEL_CLANG_VERSION := azure-clang
+  TARGET_KERNEL_CLANG_PATH := $(shell pwd)/prebuilts/clang/host/linux-x86/$(TARGET_KERNEL_CLANG_VERSION)
+  TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(TARGET_KERNEL_CLANG_PATH)/bin/aarch64-linux-gnu-
+  TARGET_KERNEL_CROSS_COMPILE_ARM32_PREFIX := $(TARGET_KERNEL_CLANG_PATH)/bin/arm-linux-gnueabi-
   TARGET_KERNEL_SOURCE := kernel/xiaomi/vayu
   TARGET_KERNEL_ADDITIONAL_FLAGS += DTC=$(shell pwd)/prebuilts/misc/$(HOST_OS)-x86/dtc/dtc
   TARGET_KERNEL_ADDITIONAL_FLAGS += HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
