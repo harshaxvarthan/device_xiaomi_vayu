@@ -101,7 +101,9 @@ ifeq ($(TARGET_PREBUILT_KERNEL),)
   TARGET_KERNEL_CONFIG := vayu_user_defconfig
   TARGET_KERNEL_CLANG_COMPILE := true
   TARGET_KERNEL_SOURCE := kernel/xiaomi/vayu
-  TARGET_KERNEL_ADDITIONAL_FLAGS += HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
+  TARGET_KERNEL_ADDITIONAL_FLAGS := \
+    DTC=$(shell pwd)/prebuilts/misc/$(HOST_OS)-x86/dtc/dtc \
+    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 endif
 
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
