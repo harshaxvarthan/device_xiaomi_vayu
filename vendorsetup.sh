@@ -1,6 +1,6 @@
 # Remove existing HAL's
 rm -rf hardware/xiaomi
-rm -rf hardwar/qcom-caf/wlan
+rm -rf hardware/qcom-caf/wlan
 rm -rf hardware/qcom-caf/sm8150/audio
 rm -rf vendor/qcom/opensource/vibrator
 rm -rf hardware/qcom-caf/sm8150/display
