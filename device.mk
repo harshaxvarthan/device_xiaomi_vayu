@@ -18,7 +18,7 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Shipping level
-PRODUCT_SHIPPING_API_LEVEL := 30
+
 
 # Dynamic partitions setup
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
