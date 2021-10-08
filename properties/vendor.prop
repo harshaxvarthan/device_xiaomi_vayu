@@ -106,6 +106,9 @@ drm.service.enabled=true
 # FM
 vendor.hw.fm.init=0
 
+# FM RADIO
+qcom.fmradio=true
+
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
