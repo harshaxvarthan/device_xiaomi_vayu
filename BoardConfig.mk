@@ -80,9 +80,9 @@ BOARD_HAVE_QCOM_FM := true
 TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY := 304
 
 # Kernel-Prebuilt
-BOARD_PREBUILT_DTBOIMAGE := device/xiaomi/vayu/prebuilt/dtbo.img
-TARGET_PREBUILT_KERNEL := device/xiaomi/vayu/prebuilt/kernel
-TARGET_PREBUILT_DTB := device/xiaomi/vayu/prebuilt/dtb.img
+BOARD_PREBUILT_DTBOIMAGE := $(LOCAL_PATH)/kernel-pb/dtbo.img
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel-pb/Image
+TARGET_PREBUILT_DTB := $(LOCAL_PATH)/kernel-pb/dtb
 
 # Kernel Path
 DEVICE_PREBUILT_PATH := device/xiaomi/vayu/prebuilt
