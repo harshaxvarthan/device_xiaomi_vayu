@@ -66,7 +66,6 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 # Headers
-PRODUCT_VENDOR_KERNEL_HEADERS := device/xiaomi/vayu/kernel-headers
 
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
@@ -412,6 +411,7 @@ PRODUCT_COPY_FILES += \
 include $(LOCAL_PATH)/properties/default.mk
 
 # RIL
+$(call inherit-product, external/json-c/Android.configure.mk)
 PRODUCT_PACKAGES += \
     libjson \
     libjson.vendor \
@@ -506,6 +506,9 @@ PRODUCT_COPY_FILES += \
 # Vndservicemanager
 PRODUCT_PACKAGES += \
     vndservicemanager
+# Kernel
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/xiaomi/vayu/modules,$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/lib/modules)
 
 # WiFi
 PRODUCT_PACKAGES += \
