@@ -81,7 +81,7 @@ TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY := 304
 
 
 # Kernel
-ARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.memcg=1
 BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 service_locator.enable=1
 BOARD_KERNEL_CMDLINE += swiotlb=2048 msm_rtb.filter=0x237
