@@ -63,7 +63,7 @@ PRODUCT_PACKAGES += \
     libvolumelistener
 
 # Headers
-PRODUCT_VENDOR_KERNEL_HEADERS := device/xiaomi/vayu/prebuilts/kernel-headers
+PRODUCT_VENDOR_KERNEL_HEADERS := device/xiaomi/vayu/prebuilt/kernel-headers
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
