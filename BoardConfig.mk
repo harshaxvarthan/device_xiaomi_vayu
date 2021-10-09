@@ -111,7 +111,6 @@ ifeq ($(TARGET_PREBUILT_KERNEL),)
 endif
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel \
     device/xiaomi/vayu/prebuilt/dtb.img:dtb.img
 
 
