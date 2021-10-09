@@ -88,52 +88,6 @@ TARGET_PREBUILT_DTB := $(LOCAL_PATH)/kernel-pb/dtb
 DEVICE_PREBUILT_PATH := device/xiaomi/vayu/prebuilt
 
 
-# Kernel
-<<<<<<< HEAD
-<<<<<<< HEAD
-ARD_KERNEL_BASE := 0x00000000
-=======
-BOARD_KERNEL_BASE := 0x00000000
-
->>>>>>> 027e5dd (prebuilts)
-=======
-BOARD_KERNEL_BASE := 0x00000000
-
->>>>>>> ef5f02666d268c16837a708d2dae3cba51846cee
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.memcg=1
-
-BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 service_locator.enable=1
-BOARD_KERNEL_CMDLINE += swiotlb=2048 msm_rtb.filter=0x237
-BOARD_KERNEL_CMDLINE += loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
-BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
-BOARD_KERNEL_PAGESIZE := 4096
-BOARD_BOOTIMG_HEADER_VERSION := 2
-BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
-<<<<<<< HEAD
-<<<<<<< HEAD
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/kernel-pb/Image
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/kernel-pb/dtb.img
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
-=======
-
->>>>>>> 027e5dd (prebuilts)
-=======
-
->>>>>>> ef5f02666d268c16837a708d2dae3cba51846cee
-TARGET_KERNEL_ARCH := arm64
-BOARD_KERNEL_IMAGE_NAME := Image
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-  TARGET_KERNEL_CONFIG := vayu_user_defconfig
-  TARGET_KERNEL_CLANG_COMPILE := true
-  TARGET_KERNEL_SOURCE := kernel/xiaomi/vayu
-endif
-
-BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel \
-    $(DEVICE_PATH)/kernel-pb/dtb.img:dtb.img
 
 
 
