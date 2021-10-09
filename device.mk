@@ -67,6 +67,9 @@ PRODUCT_PACKAGES += \
     libvisualizer \
     libvolumelistener
 
+# Headers
+PRODUCT_VENDOR_KERNEL_HEADERS := device/xiaomi/vayu/prebuilts/kernel-headers
+
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
@@ -238,6 +241,10 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.base@1.0.vendor \
     libhwbinder.vendor
+
+# Kernel
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/xiaomi/vayu/prebuilt/modules,$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/lib/modules)
 
 # HotwordEnrollement
 PRODUCT_COPY_FILES += \
