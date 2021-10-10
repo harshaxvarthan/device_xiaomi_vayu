@@ -27,6 +27,10 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_PACKAGES += \
     android.hardware.atrace@1.0-service
 
+# Namespaces
+PRODUCT_BOARD_PLATFORM := msmnile
+PRODUCT_USES_QCOM_HARDWARE := true
+
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService-Soong
