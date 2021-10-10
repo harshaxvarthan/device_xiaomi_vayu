@@ -1,5 +1,5 @@
-#ifndef _UAPI_MSM_AUDIO_WMA_H
-#define _UAPI_MSM_AUDIO_WMA_H
+#ifndef _MSM_AUDIO_WMA_H
+#define _MSM_AUDIO_WMA_H
 
 #define AUDIO_GET_WMA_CONFIG  _IOR(AUDIO_IOCTL_MAGIC, \
 	  (AUDIO_MAX_COMMON_IOCTL_NUM+0), unsigned int)
@@ -30,4 +30,4 @@ struct msm_audio_wma_config_v2 {
 	unsigned short	encodeopt;
 };
 
-#endif /* _UAPI_MSM_AUDIO_WMA_H */
+#endif /* _MSM_AUDIO_WMA_H */

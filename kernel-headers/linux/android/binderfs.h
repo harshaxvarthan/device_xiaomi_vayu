@@ -1,35 +1,31 @@
-/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
-/*
- * Copyright (C) 2018 Canonical Ltd.
- *
- */
-
-#ifndef _LINUX_BINDER_CTL_H
-#define _LINUX_BINDER_CTL_H
-
+/****************************************************************************
+ ****************************************************************************
+ ***
+ ***   This header was automatically generated from a Linux kernel header
+ ***   of the same name, to make information necessary for userspace to
+ ***   call into the kernel available to libc.  It contains only constants,
+ ***   structures, and macros generated from the original header, and thus,
+ ***   contains no copyrightable information.
+ ***
+ ***   To edit the content of this header, modify the corresponding
+ ***   source file (e.g. under external/kernel-headers/original/) then
+ ***   run bionic/libc/kernel/tools/update_all.py
+ ***
+ ***   Any manual change here will be lost the next time this script will
+ ***   be run. You've been warned!
+ ***
+ ****************************************************************************
+ ****************************************************************************/
+#ifndef _UAPI_LINUX_BINDER_CTL_H
+#define _UAPI_LINUX_BINDER_CTL_H
 #include <linux/android/binder.h>
 #include <linux/types.h>
 #include <linux/ioctl.h>
-
 #define BINDERFS_MAX_NAME 255
-
-/**
- * struct binderfs_device - retrieve information about a new binder device
- * @name:   the name to use for the new binderfs binder device
- * @major:  major number allocated for binderfs binder devices
- * @minor:  minor number allocated for the new binderfs binder device
- *
- */
 struct binderfs_device {
-	char name[BINDERFS_MAX_NAME + 1];
-	__u8 major;
-	__u8 minor;
+  char name[BINDERFS_MAX_NAME + 1];
+  __u8 major;
+  __u8 minor;
 };
-
-/**
- * Allocate a new binder device.
- */
 #define BINDER_CTL_ADD _IOWR('b', 1, struct binderfs_device)
-
-#endif /* _LINUX_BINDER_CTL_H */
-
+#endif

@@ -1,5 +1,5 @@
-#ifndef _UAPI_MSM_AUDIO_VOICEMEMO_H
-#define _UAPI_MSM_AUDIO_VOICEMEMO_H
+#ifndef _MSM_AUDIO_VOICEMEMO_H
+#define _MSM_AUDIO_VOICEMEMO_H
 
 #include <linux/msm_audio.h>
 
@@ -63,4 +63,4 @@ struct msm_audio_voicememo_config {
 	uint32_t data_req_ms;
 };
 
-#endif /* _UAPI_MSM_AUDIO_VOICEMEMO_H */
+#endif /* _MSM_AUDIO_VOICEMEMO_H */

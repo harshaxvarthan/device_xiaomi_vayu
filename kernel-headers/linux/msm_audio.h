@@ -14,8 +14,8 @@
  *
  */
 
-#ifndef _UAPI_LINUX_MSM_AUDIO_H
-#define _UAPI_LINUX_MSM_AUDIO_H
+#ifndef _LINUX_MSM_AUDIO_H
+#define _LINUX_MSM_AUDIO_H
 
 #include <linux/types.h>
 #include <linux/ioctl.h>

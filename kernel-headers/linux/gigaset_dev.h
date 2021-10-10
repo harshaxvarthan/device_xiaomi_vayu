@@ -1,39 +1,30 @@
-/* SPDX-License-Identifier: GPL-2.0+ WITH Linux-syscall-note */
-/*
- * interface to user space for the gigaset driver
- *
- * Copyright (c) 2004 by Hansjoerg Lipp <hjlipp@web.de>
- *
- * =====================================================================
- *    This program is free software; you can redistribute it and/or
- *    modify it under the terms of the GNU General Public License as
- *    published by the Free Software Foundation; either version 2 of
- *    the License, or (at your option) any later version.
- * =====================================================================
- */
-
+/****************************************************************************
+ ****************************************************************************
+ ***
+ ***   This header was automatically generated from a Linux kernel header
+ ***   of the same name, to make information necessary for userspace to
+ ***   call into the kernel available to libc.  It contains only constants,
+ ***   structures, and macros generated from the original header, and thus,
+ ***   contains no copyrightable information.
+ ***
+ ***   To edit the content of this header, modify the corresponding
+ ***   source file (e.g. under external/kernel-headers/original/) then
+ ***   run bionic/libc/kernel/tools/update_all.py
+ ***
+ ***   Any manual change here will be lost the next time this script will
+ ***   be run. You've been warned!
+ ***
+ ****************************************************************************
+ ****************************************************************************/
 #ifndef GIGASET_INTERFACE_H
 #define GIGASET_INTERFACE_H
-
 #include <linux/ioctl.h>
-
-/* The magic IOCTL value for this interface. */
 #define GIGASET_IOCTL 0x47
-
-/* enable/disable device control via character device (lock out ISDN subsys) */
-#define GIGASET_REDIR    _IOWR(GIGASET_IOCTL, 0, int)
-
-/* enable adapter configuration mode (M10x only) */
-#define GIGASET_CONFIG   _IOWR(GIGASET_IOCTL, 1, int)
-
-/* set break characters (M105 only) */
+#define GIGASET_REDIR _IOWR(GIGASET_IOCTL, 0, int)
+#define GIGASET_CONFIG _IOWR(GIGASET_IOCTL, 1, int)
 #define GIGASET_BRKCHARS _IOW(GIGASET_IOCTL, 2, unsigned char[6])
-
-/* get version information selected by arg[0] */
-#define GIGASET_VERSION  _IOWR(GIGASET_IOCTL, 3, unsigned[4])
-/* values for GIGASET_VERSION arg[0] */
-#define GIGVER_DRIVER 0		/* get driver version */
-#define GIGVER_COMPAT 1		/* get interface compatibility version */
-#define GIGVER_FWBASE 2		/* get base station firmware version */
-
+#define GIGASET_VERSION _IOWR(GIGASET_IOCTL, 3, unsigned[4])
+#define GIGVER_DRIVER 0
+#define GIGVER_COMPAT 1
+#define GIGVER_FWBASE 2
 #endif
