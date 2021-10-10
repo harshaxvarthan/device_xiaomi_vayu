@@ -79,23 +79,19 @@ BOARD_HAVE_QCOM_FM := true
 # Input
 TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY := 304
 
-
 # Kernel
 BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_SEPARATED_DTBO := true
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.memcg=1
 BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 service_locator.enable=1
 BOARD_KERNEL_CMDLINE += swiotlb=2048 msm_rtb.filter=0x237
 BOARD_KERNEL_CMDLINE += loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_BOOTIMG_HEADER_VERSION := 2
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/kernel-pb/dtbo.img
 BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/kernel-pb/Image
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/kernel-pb/dtb.img
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 TARGET_KERNEL_ARCH := arm64
 BOARD_KERNEL_IMAGE_NAME := Image
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -105,9 +101,6 @@ ifeq ($(TARGET_PREBUILT_KERNEL),)
   TARGET_KERNEL_ADDITIONAL_FLAGS += HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 endif
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel \
-    $(DEVICE_PATH)/kernel-pb/dtb.img:dtb.img
 
 # NFC
 TARGET_USES_NQ_NFC := true
