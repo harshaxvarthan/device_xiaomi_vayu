@@ -722,7 +722,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.wifi.wifilearner</name>
-        <version>1.0</version>
+        <version>1.5</version>
         <interface>
             <name>IWifiStats</name>
             <instance>wifiStats</instance>
