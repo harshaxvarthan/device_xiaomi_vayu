@@ -34,27 +34,6 @@ on early-init
     chmod 0755 /sys/kernel/debug
     mount tracefs tracefs /sys/kernel/tracing
     chmod 0755 /sys/kernel/tracing
-    setprop "ro.com.google.clientidbase" "android-xiaomi"
-    setprop "ro.com.google.clientidbase.ax" "android-xiaomi-rvo3"
-    setprop "ro.com.google.clientidbase.ms" "android-xiaomi-rvo3"
-    setprop "ro.com.google.clientidbase.tx" "android-xiaomi-rvo3"
-    setprop "ro.com.google.clientidbase.vs" "android-xiaomi-rvo3"
-    
-    setprop "ro.product.brand" "POCO"
-    setprop "ro.product.device" "vayu"
-    setprop "ro.product.model" "M2102J20SG"
-    setprop "ro.product.name" "vayu_global"
-    setprop "ro.product.marketname" "POCO X3 Pro"
-
-    setprop "ro.build.fingerprint" "POCO/vayu_global/vayu:11/RKQ1.200826.002/V12.5.4.0.RJUMIXM:user/release-keys"
-    setprop "ro.build.description" "vayu_global-user 11 RKQ1.200826.002 V12.5.4.0.RJUMIXM release-keys"
-    setprop "ro.bootimage.build.fingerprint" "POCO/vayu_global/vayu:11/RKQ1.200826.002/V12.5.4.0.RJUMIXM:user/release-keys"
-    setprop "ro.system_ext.build.fingerprint" "POCO/vayu_global/vayu:11/RKQ1.200826.002/V12.5.4.0.RJUMIXM:user/release-keys"
-    setprop "ro.product.mod_device" "vayu_global"
-    
-    setprop "ro.boot.verifiedbootstate" "green"
-    setprop "ro.oem_unlock_supported" "0"
-    setprop "ro.control_privapp_permissions" "log"
 
   # Change ownership of hw_recovery related nodes
     chown system graphics /sys/kernel/debug/dri/0/debug/dump
@@ -75,12 +54,6 @@ on early-init
 
     chown root system /dev/kmsg
     chmod 0620 /dev/kmsg
-
-on property:ro.boot.hwc="INDIA"
-    setprop "ro.product.mod_device" "bhima_global"
-    setprop "ro.product.device" "bhima"
-    setprop "ro.product.model" "M2102J20SI"
-    setprop "ro.product.name" "bhima_global"
 
 on init
 
