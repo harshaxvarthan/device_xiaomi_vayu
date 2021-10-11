@@ -124,8 +124,8 @@ void set_device_props(const std::string fingerprint, const std::string descripti
 
 void vendor_load_properties() {
 //   SafetyNet workaround
-    char const fp[] = "google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys";
-    char const fp_desc[] = "walleye-user 8.1.0 OPM1.171019.011 4448085 release-keys";
+    char const fp[] = "google/redfin/redfin:12/SPB5.210812.002/7671067:user/release-keys";
+    char const fp_desc[] = "redfin-user 12 SPB5.210812.002 7671067 release-keys";
 
     string region = android::base::GetProperty("ro.boot.hwc", "");
 
