@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/fluid_vayu.mk
+    $(LOCAL_DIR)/vayu.mk
 
 COMMON_LUNCH_CHOICES := \
-    fluid_vayu-eng \
-    fluid_vayu-userdebug \
-    fluid_vayu-user
+    vayu-eng \
+    vayu-userdebug \
+    vayu-user

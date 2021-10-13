@@ -11,19 +11,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit device configurations
 $(call inherit-product, device/xiaomi/vayu/device.mk)
 
-# Fluid Config
-$(call inherit-product, vendor/fluid/config/common_full_phone.mk)
-
-# Maintainer
-PRODUCT_PRODUCT_PROPERTIES += \
-  ro.fluid.maintainer=Sfier Reichenbach \
-  ro.fluid.cpu=SDM860
-
 # Misc
 TARGET_FACE_UNLOCK_SUPPORTED := true
 TARGET_BOOT_ANIMATION_RES := 1080
 
-PRODUCT_NAME := fluid_vayu
+PRODUCT_NAME := vayu
 PRODUCT_DEVICE := vayu
 PRODUCT_BRAND := POCO
 PRODUCT_MODEL := Poco X3 Pro
