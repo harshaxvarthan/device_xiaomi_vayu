@@ -211,6 +211,10 @@ sys.vendor.shutdown.waittime=500
 # WiFi
 wifi.aware.interface=wifi-aware0
 
+# Soc
+ro.soc.manufacturer=Qualcomm
+ro.soc.model=SDM860
+
 # WFD
 ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
 ro.surface_flinger.max_virtual_display_dimension=4096
