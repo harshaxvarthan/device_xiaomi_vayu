@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018-2021 Rohie Os
+# Copyright (C) 2018-2021 ArrowOS
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -8,12 +8,17 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_product.mk)
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base_system_ext.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base_system.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base_vendor.mk)
+
 # Inherit device configurations
 $(call inherit-product, device/xiaomi/vayu/device.mk)
-
-# Misc
-TARGET_FACE_UNLOCK_SUPPORTED := true
-TARGET_BOOT_ANIMATION_RES := 1080
+$(call inherit-product-if-exists, vendor/build/config/BoardConfigAOSP.mk)
 
 PRODUCT_NAME := vayu
 PRODUCT_DEVICE := vayu
