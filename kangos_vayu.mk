@@ -11,16 +11,19 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit device configurations
 $(call inherit-product, device/xiaomi/vayu/device.mk)
 
-# Inherit some common xd stuff.
-$(call inherit-product, vendor/xdroid/config/common.mk)
-XDROID_BOOT_DARK := true
-XDROID_UI_BLUR := true
-
+# Inherit some common kangos stuff.
+$(call inherit-product, vendor/kangos/config/common.mk)
+KANGOS_BUILDTYPE := UNOFFICIAL
+PRODUCT_PRODUCT_PROPERTIES += \
+  ro.kangos.maintainer=darkinvader \
+  ro.kangos.cpu=SDM860
+  
 # Misc
 TARGET_FACE_UNLOCK_SUPPORTED := true
 TARGET_BOOT_ANIMATION_RES := 1080
+USE_GAPPS := true
 
-PRODUCT_NAME := xdroid_vayu
+PRODUCT_NAME := kangos_vayu
 PRODUCT_DEVICE := vayu
 PRODUCT_BRAND := POCO
 PRODUCT_MODEL := Poco X3 Pro
