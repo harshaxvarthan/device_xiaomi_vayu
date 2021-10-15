@@ -100,6 +100,13 @@ ro.vendor.display.ad.sdr_calib_data=/vendor/etc/sdr_config.cfg
 ro.vendor.display.ad.hdr_calib_data=/vendor/etc/hdr_config.cfg
 ro.vendor.display.sensortype=2
 
+# Experimental
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.cgroup_follow.enable=true
+    persist.vendor.qti.inputopts.enable=true
+    persist.vendor.qti.inputopts.movetouchslop=0.6
+    ro.qcom.adreno.qgl.ShaderStorageImageExtendedFormats
+
 # DRM
 drm.service.enabled=true
 
