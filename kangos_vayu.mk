@@ -13,6 +13,8 @@ $(call inherit-product, device/xiaomi/vayu/device.mk)
 
 # Inherit some common kangos stuff.
 $(call inherit-product, vendor/kangos/config/common.mk)
+$(call inherit-product, vendor/gms/gms_full.mk)
+ 
 KANGOS_BUILDTYPE := UNOFFICIAL
 PRODUCT_PRODUCT_PROPERTIES += \
   ro.kangos.maintainer=darkinvader \
