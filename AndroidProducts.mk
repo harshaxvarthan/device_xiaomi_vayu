@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/kangos_vayu.mk
+    $(LOCAL_DIR)/xdroid_vayu.mk
 
 COMMON_LUNCH_CHOICES := \
-    kangos_vayu-eng \
-    kangos_vayu-userdebug \
-    kangos_vayu-user
+    xdroid_vayu-eng \
+    xdroid_vayu-userdebug \
+    xdroid_vayu-user
